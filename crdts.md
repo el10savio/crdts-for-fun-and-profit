@@ -5,7 +5,7 @@
 
 Filled with enthusiasm and determination you set out to build your app. Keeping in mind that this would be the next big thing you start out initially prototyping, ideating and slowly composing and piecing together your application. Amazingly, it's great! works well. You set out to tell your friends and family spreading the word and one fine day, you see a huge influx of users enjoying your app. But then, you realize, this is exactly what has happened now, one big app!
 
-Most software applications start out as a three tiered application, seperating out the frontend, the backend and the storage database layer. This architecture works well, until it hits scale. A massive blatant problem here we see is that, if any single part of our application fails, our whole service fails. 
+Most software applications start out as a three tiered application, separating out the frontend, the backend and the storage database layer. This architecture works well, until it hits scale. A massive blatant problem here we see is that, if any single part of our application fails, our whole service fails. 
 
 ## Scaling above & beyond
 
@@ -33,7 +33,7 @@ CRDTs abbreviated as Conflict Free Replicated Data Types are an intersting data 
 
 CRDTs have interesting properties which enable nodes to converge eventually to the expected value. Nodes "converge" to the right value by leading in a direction of operation. An example of convergence is a site visitors counter where the count always increases and does not decrease. Where two site counters tracking the same site have conflicting values, they then get in sync and converge to the right value by both setting their counts to the maximum value, thus moving forward and converging. 
 
-Some other properties of CRDTs are associativity where the order of operations does not matter, since associativy guarantees that irrespective of the order, the result of the operations would still be the same value. Idemotency is another property which guarantess that even if there are duplicate operations sent multiple times to the node, it still leads to the same result in the node due to idempotency of the underlying CRDT data type. Some examples of intersting CRDTs are:
+Some other properties of CRDTs are associativity where the order of operations does not matter, since associativy guarantees that irrespective of the order, the result of the operations would still be the same value. Idemotency is another property which guarantees that even if there are duplicate operations sent multiple times to the node, it still leads to the same result in the node due to idempotency of the underlying CRDT data type. Some examples of intersting CRDTs are:
 
 ***GCounter CRDT***
  GCounters abbreviated as grow-only counters are CRDT counters modified to only increment the count in it and becomes consistent across nodes in a cluster having replicated the counter. They work by setting a value that only increases and during a conflict merge to a value of the maximum count.
@@ -47,5 +47,5 @@ There are also a different data type similar to CRDTs which employ Operational T
 
 CRDTs seem too good to be true, but they do have some disadvantages with them. The main one being that since the nodes would be "eventually" consistent, in the application end we would never accurately know when they would be the right value. Another disadvantage is that to maintain deletes or removal of entries in the data at times we use tombstones to mark them for deletion, which increases the overall size of the data structure along with associated metadata to process it.
 
-Overall, CRDTs are a really good fit if you can bend the problem space to utilize it and comes with a lot of advantages for the user. Reliability and availabilty will definitely be improved and fares really great to use as a tool to sync data.
+Overall, CRDTs are a really good fit if you can bend the problem space to utilize it and comes with a lot of advantages for the user. Reliability and availability will definitely be improved and fares really great to use as a tool to sync data.
 
