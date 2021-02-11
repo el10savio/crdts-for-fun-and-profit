@@ -34,12 +34,18 @@ CRDTs abbreviated as Conflict-Free Replicated Data Types aim to get nodes in a c
 
 CRDTs have properties that enable nodes to converge eventually to an expected value. Nodes "converge" to the right value by leading in a direction of operation. An example of convergence is a site visitors counter where the count can only increase. When two site counters tracking the same site have conflicting values, they then get in sync and converge to the right value by setting their counts to the maximum value, thus moving forward and converging.
 
-Another property of CRDTs is associativity where the order of operations is immaterial since associativity guarantees that irrespective of the order, the result of the operations would still be the same value. Idempotency is another property that guarantees that even if duplicate operations are sent multiple times to the node, it still leads to the same result in the node due to the idempotency of the underlying CRDT data type. 
+Some properties of CRDTs are:
+
+**Associativity**
+The order of operations is immaterial since irrespective of the order, the result of the operations would still be the same value.
+
+**Idempotency** 
+Even if duplicate operations are sent multiple times to the node, it still leads to the same result in the node.
 
 Some examples of interesting CRDTs are:
 
 **GCounter CRDT**
- GCounters abbreviated as grow-only counters are CRDT counters modified to only increment the count in it and becomes consistent across nodes in a cluster having replicated the counter. They work by setting a value that only increases and during a conflict merge to a value of the largest count.
+GCounters abbreviated as grow-only counters are CRDT counters modified to only increment the count in it and becomes consistent across nodes in a cluster having replicated the counter. They work by setting a value that only increases and during a conflict merge to a value of the largest count.
 
 **GSet CRDT**
 GSets abbreviated as grow-only sets are CRDTs modified to only add elements in it and becomes consistent across nodes in a cluster having replicated the set. They work by adding value that only increases the size of the set and during a conflict, merge to only add new values to it.
